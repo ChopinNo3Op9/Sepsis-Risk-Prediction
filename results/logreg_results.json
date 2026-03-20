@@ -1,0 +1,56 @@
+{
+  "model": "LogisticRegression",
+  "config": {
+    "data_dir": "data/raw",
+    "history_hours": 24,
+    "forecast_hours": 6,
+    "seed": 42,
+    "max_patients": 220,
+    "bootstrap_rounds": 100,
+    "out_dir": "results"
+  },
+  "data_stats": {
+    "total_windows": 2668,
+    "positive_rate": 0.020989505247376312,
+    "train_positive_rate": 0.016068559185859668,
+    "val_positive_rate": 0.03,
+    "test_positive_rate": 0.034912718204488775
+  },
+  "split_stats": {
+    "train_size": 1867,
+    "val_size": 400,
+    "test_size": 401
+  },
+  "test_metrics": {
+    "auroc": {
+      "mean": 0.5765305141871396,
+      "ci_lower": 0.4151714319435838,
+      "ci_upper": 0.7425194187052238
+    },
+    "auprc": {
+      "mean": 0.07313336264692719,
+      "ci_lower": 0.02921395587593108,
+      "ci_upper": 0.1531912177872811
+    },
+    "sensitivity": {
+      "mean": 0.1265315519533786,
+      "ci_lower": 0.0,
+      "ci_upper": 0.3067513368983955
+    },
+    "specificity": {
+      "mean": 0.9638977054917349,
+      "ci_lower": 0.9426619508562919,
+      "ci_upper": 0.9820073354480571
+    },
+    "f1": {
+      "mean": 0.1167726749877357,
+      "ci_lower": 0.0,
+      "ci_upper": 0.29411764705882354
+    },
+    "brier": {
+      "mean": 0.06278740857621072,
+      "ci_lower": 0.04183090166719824,
+      "ci_upper": 0.08097481356941674
+    }
+  }
+}
