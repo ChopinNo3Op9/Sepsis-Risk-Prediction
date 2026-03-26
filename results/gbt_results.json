@@ -1,0 +1,89 @@
+{
+  "model": "GradientBoostedTrees",
+  "config": {
+    "data_dir": "data/raw",
+    "history_hours": 24,
+    "forecast_hours": 6,
+    "seed": 42,
+    "max_patients": 220,
+    "bootstrap_rounds": 100,
+    "out_dir": "results"
+  },
+  "data_stats": {
+    "total_windows": 2668,
+    "positive_rate": 0.020989505247376312,
+    "train_positive_rate": 0.016068559185859668,
+    "val_positive_rate": 0.03,
+    "test_positive_rate": 0.034912718204488775
+  },
+  "split_stats": {
+    "train_size": 1867,
+    "val_size": 400,
+    "test_size": 401
+  },
+  "tuning": {
+    "selection_metric": "val_auprc",
+    "tie_breakers": [
+      "val_auroc",
+      "val_brier_lower"
+    ],
+    "total_trials": 24,
+    "scale_pos_weight": 61.233333333333334,
+    "best_trial": {
+      "params": {
+        "n_estimators": 350,
+        "learning_rate": 0.03,
+        "max_depth": 4,
+        "min_child_weight": 3,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 1.0
+      },
+      "val_auprc": 0.12299165900297454,
+      "val_auroc": 0.7905927835051546,
+      "val_f1": 0.0,
+      "val_brier": 0.029806730421845017
+    }
+  },
+  "validation_metrics": {
+    "auroc": 0.7905927835051546,
+    "auprc": 0.12299165900297454,
+    "sensitivity": 0.0,
+    "specificity": 1.0,
+    "f1": 0.0,
+    "brier": 0.029806730421845017,
+    "threshold": 0.5
+  },
+  "test_metrics": {
+    "auroc": {
+      "mean": 0.4961611450487119,
+      "ci_lower": 0.31353487161693266,
+      "ci_upper": 0.6918746327653436
+    },
+    "auprc": {
+      "mean": 0.0638748241949522,
+      "ci_lower": 0.025754382933496942,
+      "ci_upper": 0.12264823283379746
+    },
+    "sensitivity": {
+      "mean": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0
+    },
+    "specificity": {
+      "mean": 1.0,
+      "ci_lower": 1.0,
+      "ci_upper": 1.0
+    },
+    "f1": {
+      "mean": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0
+    },
+    "brier": {
+      "mean": 0.03525289575819656,
+      "ci_lower": 0.02038148031948198,
+      "ci_upper": 0.0508982936298059
+    }
+  }
+}
