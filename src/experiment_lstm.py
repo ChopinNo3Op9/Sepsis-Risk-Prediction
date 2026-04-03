@@ -14,10 +14,13 @@ import numpy as np
 import pandas as pd
 import torch
 from sklearn.metrics import (
+    accuracy_score,
     average_precision_score,
     brier_score_loss,
     confusion_matrix,
     f1_score,
+    precision_score,
+    recall_score,
     roc_auc_score,
 )
 from torch import nn
@@ -296,15 +299,41 @@ def evaluate_model(
     f1 = f1_score(y_test, y_pred, zero_division=0.0)
     brier = brier_score_loss(y_test, y_pred_proba)
 
+    precision = precision_score(y_test, y_pred, zero_division=0)
+    recall = recall_score(y_test, y_pred, zero_division=0)
+    accuracy = accuracy_score(y_test, y_pred)
+    ece = expected_calibration_error(y_test, y_pred_proba)
+
     return {
         "auroc": auroc,
         "auprc": auprc,
         "sensitivity": sensitivity,
         "specificity": specificity,
+        "precision": precision,
+        "recall": recall,
+        "accuracy": accuracy,
         "f1": f1,
         "brier": brier,
+        "ece": ece,
         "threshold": 0.5,
     }
+
+
+def expected_calibration_error(y_true: np.ndarray, y_prob: np.ndarray, bins: int = 10) -> float:
+    edges = np.linspace(0.0, 1.0, bins + 1)
+    ece = 0.0
+    for i in range(bins):
+        lo, hi = edges[i], edges[i + 1]
+        if i < bins - 1:
+            mask = (y_prob >= lo) & (y_prob < hi)
+        else:
+            mask = (y_prob >= lo) & (y_prob <= hi)
+        if not np.any(mask):
+            continue
+        acc = y_true[mask].mean()
+        conf = y_prob[mask].mean()
+        ece += np.abs(acc - conf) * mask.mean()
+    return float(ece)
 
 
 def bootstrap_ci_95(metric_values: np.ndarray) -> Tuple[float, float]:
@@ -365,8 +394,12 @@ def run_experiment(config: Config) -> Dict:
         "auprc": [],
         "sensitivity": [],
         "specificity": [],
+        "precision": [],
+        "recall": [],
+        "accuracy": [],
         "f1": [],
         "brier": [],
+        "ece": [],
     }
 
     for _ in tqdm(range(config.bootstrap_rounds), desc="Bootstrap"):
