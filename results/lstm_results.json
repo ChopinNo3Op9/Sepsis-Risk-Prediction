@@ -1,0 +1,75 @@
+{
+  "model": "LSTM",
+  "config": {
+    "data_dir": "data/raw",
+    "history_hours": 24,
+    "forecast_hours": 6,
+    "seed": 42,
+    "max_patients": 220,
+    "bootstrap_rounds": 100,
+    "batch_size": 128,
+    "epochs": 8,
+    "learning_rate": 0.001,
+    "hidden_size": 64,
+    "out_dir": "results"
+  },
+  "data_stats": {
+    "total_windows": 2668,
+    "positive_rate": 0.020989505247376312,
+    "train_positive_rate": 0.016068559185859668,
+    "val_positive_rate": 0.03,
+    "test_positive_rate": 0.034912718204488775
+  },
+  "split_stats": {
+    "train_size": 1867,
+    "val_size": 400,
+    "test_size": 401
+  },
+  "training": {
+    "batch_size": 128,
+    "epochs": 8,
+    "learning_rate": 0.001,
+    "hidden_size": 64
+  },
+  "validation_metrics": {
+    "auroc": 0.8526632302405498,
+    "auprc": 0.12229621107098729,
+    "sensitivity": 1.0,
+    "specificity": 0.5463917525773195,
+    "f1": 0.12,
+    "brier": 0.24594587764267886,
+    "threshold": 0.5
+  },
+  "test_metrics": {
+    "auroc": {
+      "mean": 0.6896674193677638,
+      "ci_lower": 0.620124498929671,
+      "ci_upper": 0.7595080437697018
+    },
+    "auprc": {
+      "mean": 0.059416921255192906,
+      "ci_lower": 0.029221645359365802,
+      "ci_upper": 0.08733860840163327
+    },
+    "sensitivity": {
+      "mean": 1.0,
+      "ci_lower": 1.0,
+      "ci_upper": 1.0
+    },
+    "specificity": {
+      "mean": 0.5035088988238617,
+      "ci_lower": 0.44859780844155844,
+      "ci_upper": 0.5557660147949949
+    },
+    "f1": {
+      "mean": 0.12558938757446333,
+      "ci_lower": 0.07156552083751153,
+      "ci_upper": 0.18232919254658383
+    },
+    "brier": {
+      "mean": 0.25092501666600614,
+      "ci_lower": 0.24696162233941196,
+      "ci_upper": 0.2548138691967454
+    }
+  }
+}
