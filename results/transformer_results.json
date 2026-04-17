@@ -1,0 +1,111 @@
+{
+  "model": "Transformer",
+  "config": {
+    "data_dir": "data/raw",
+    "history_hours": 24,
+    "forecast_hours": 6,
+    "seed": 42,
+    "max_patients": 220,
+    "bootstrap_rounds": 100,
+    "batch_size": 128,
+    "epochs": 8,
+    "learning_rate": 0.001,
+    "d_model": 64,
+    "nhead": 4,
+    "num_layers": 1,
+    "dim_feedforward": 128,
+    "dropout": 0.0,
+    "patience": 8,
+    "grad_clip": 1.0,
+    "out_dir": "results"
+  },
+  "data_stats": {
+    "total_windows": 2668,
+    "positive_rate": 0.020989505247376312,
+    "train_positive_rate": 0.016068559185859668,
+    "val_positive_rate": 0.03,
+    "test_positive_rate": 0.034912718204488775
+  },
+  "split_stats": {
+    "train_size": 1867,
+    "val_size": 400,
+    "test_size": 401
+  },
+  "training": {
+    "batch_size": 128,
+    "epochs": 8,
+    "learning_rate": 0.001,
+    "d_model": 64,
+    "nhead": 4,
+    "num_layers": 1,
+    "dim_feedforward": 128,
+    "dropout": 0.0,
+    "patience": 8,
+    "grad_clip": 1.0
+  },
+  "validation_metrics": {
+    "auroc": 0.7615979381443299,
+    "auprc": 0.09443199104887086,
+    "sensitivity": 0.25,
+    "specificity": 0.9097938144329897,
+    "precision": 0.07894736842105263,
+    "recall": 0.25,
+    "accuracy": 0.89,
+    "f1": 0.12,
+    "brier": 0.1236248634202485,
+    "ece": 0.29534302648156885,
+    "threshold": 0.5
+  },
+  "test_metrics": {
+    "auroc": {
+      "mean": 0.616287778385199,
+      "ci_lower": 0.5340897561151075,
+      "ci_upper": 0.7122879262561754
+    },
+    "auprc": {
+      "mean": 0.052543387802094575,
+      "ci_lower": 0.027755655740964166,
+      "ci_upper": 0.08314630735365415
+    },
+    "sensitivity": {
+      "mean": 0.28080237207752684,
+      "ci_lower": 0.10527777777777778,
+      "ci_upper": 0.5
+    },
+    "specificity": {
+      "mean": 0.7596793797812694,
+      "ci_lower": 0.7099637893912704,
+      "ci_upper": 0.8043880687991943
+    },
+    "precision": {
+      "mean": 0.04020288758703914,
+      "ci_lower": 0.009995999599959997,
+      "ci_upper": 0.08511456135061801
+    },
+    "recall": {
+      "mean": 0.28080237207752684,
+      "ci_lower": 0.10527777777777778,
+      "ci_upper": 0.5
+    },
+    "accuracy": {
+      "mean": 0.743142144638404,
+      "ci_lower": 0.6957605985037406,
+      "ci_upper": 0.7880299251870324
+    },
+    "f1": {
+      "mean": 0.06986456947089692,
+      "ci_lower": 0.018429323819232075,
+      "ci_upper": 0.14531615925058544
+    },
+    "brier": {
+      "mean": 0.1662539950305171,
+      "ci_lower": 0.1528219188519974,
+      "ci_upper": 0.18064526532165617
+    },
+    "ece": {
+      "mean": 0.33606374907411835,
+      "ci_lower": 0.31214634558636495,
+      "ci_upper": 0.35590025398815206
+    }
+  }
+}
