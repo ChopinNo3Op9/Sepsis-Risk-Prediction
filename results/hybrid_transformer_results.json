@@ -1,0 +1,136 @@
+{
+  "model": "HybridBiGRUTransformer",
+  "config": {
+    "data_dir": "data/raw",
+    "history_hours": 24,
+    "forecast_hours": 6,
+    "seed": 42,
+    "max_patients": 220,
+    "bootstrap_rounds": 100,
+    "batch_size": 128,
+    "epochs": 14,
+    "learning_rate": 0.0008,
+    "d_model": 96,
+    "nhead": 4,
+    "num_layers": 2,
+    "dim_feedforward": 256,
+    "gru_layers": 2,
+    "dropout": 0.2,
+    "patience": 4,
+    "grad_clip": 1.0,
+    "weight_decay": 0.001,
+    "gamma": 2.0,
+    "out_dir": "results"
+  },
+  "data_stats": {
+    "total_windows": 2668,
+    "positive_rate": 0.020989505247376312,
+    "train_positive_rate": 0.016068559185859668,
+    "val_positive_rate": 0.03,
+    "test_positive_rate": 0.034912718204488775
+  },
+  "split_stats": {
+    "train_size": 1867,
+    "val_size": 400,
+    "test_size": 401
+  },
+  "feature_engineering": {
+    "base_features": [
+      "HR",
+      "O2Sat",
+      "Temp",
+      "SBP",
+      "MAP",
+      "DBP",
+      "Resp",
+      "FiO2"
+    ],
+    "engineered_channels": [
+      "normalized_values",
+      "first_difference",
+      "missing_indicator"
+    ],
+    "final_feature_dim": 24
+  },
+  "training": {
+    "batch_size": 128,
+    "epochs": 14,
+    "learning_rate": 0.0008,
+    "d_model": 96,
+    "nhead": 4,
+    "num_layers": 2,
+    "dim_feedforward": 256,
+    "gru_layers": 2,
+    "dropout": 0.2,
+    "patience": 4,
+    "grad_clip": 1.0,
+    "weight_decay": 0.001,
+    "focal_gamma": 2.0,
+    "selected_threshold": 0.65
+  },
+  "validation_metrics": {
+    "auroc": 0.7605240549828179,
+    "auprc": 0.06034007025540161,
+    "sensitivity": 0.0,
+    "specificity": 1.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "accuracy": 0.97,
+    "f1": 0.0,
+    "brier": 0.13606139835506068,
+    "ece": 0.31526682965457437,
+    "threshold": 0.65
+  },
+  "test_metrics": {
+    "auroc": {
+      "mean": 0.4128679900098185,
+      "ci_lower": 0.25148528554778554,
+      "ci_upper": 0.5724287715738492
+    },
+    "auprc": {
+      "mean": 0.03882617177071787,
+      "ci_lower": 0.0176447773382901,
+      "ci_upper": 0.062307217432691346
+    },
+    "sensitivity": {
+      "mean": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0
+    },
+    "specificity": {
+      "mean": 1.0,
+      "ci_lower": 1.0,
+      "ci_upper": 1.0
+    },
+    "precision": {
+      "mean": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0
+    },
+    "recall": {
+      "mean": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0
+    },
+    "accuracy": {
+      "mean": 0.9654862842892767,
+      "ci_lower": 0.95,
+      "ci_upper": 0.9800498753117207
+    },
+    "f1": {
+      "mean": 0.0,
+      "ci_lower": 0.0,
+      "ci_upper": 0.0
+    },
+    "brier": {
+      "mean": 0.1713316879341698,
+      "ci_lower": 0.16012211941350238,
+      "ci_upper": 0.18574582077414561
+    },
+    "ece": {
+      "mean": 0.34996906226561253,
+      "ci_lower": 0.3279514756025816,
+      "ci_upper": 0.3684093581860945
+    }
+  }
+}
