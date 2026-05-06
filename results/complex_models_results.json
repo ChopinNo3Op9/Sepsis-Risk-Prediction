@@ -1,0 +1,515 @@
+{
+  "experiment": "complex_model_benchmark",
+  "config": {
+    "data_dir": "data/raw",
+    "history_hours": 24,
+    "forecast_hours": 6,
+    "seed": 42,
+    "max_patients": 220,
+    "bootstrap_rounds": 100,
+    "out_dir": "results"
+  },
+  "features": [
+    "HR",
+    "O2Sat",
+    "Temp",
+    "SBP",
+    "MAP",
+    "DBP",
+    "Resp",
+    "EtCO2",
+    "BaseExcess",
+    "HCO3",
+    "pH",
+    "PaCO2",
+    "Glucose",
+    "Lactate",
+    "Potassium",
+    "Hgb",
+    "WBC",
+    "Creatinine",
+    "Platelets",
+    "BUN"
+  ],
+  "split_stats": {
+    "train_size": 1867,
+    "val_size": 400,
+    "test_size": 401
+  },
+  "data_stats": {
+    "total_windows": 2668,
+    "positive_rate": 0.020989505247376312,
+    "train_positive_rate": 0.016068559185859668,
+    "val_positive_rate": 0.03,
+    "test_positive_rate": 0.034912718204488775,
+    "scale_pos_weight": 61.233333333333334
+  },
+  "validation_results": [
+    {
+      "model": "xgboost_dart",
+      "threshold": 0.011746453382074832,
+      "val_best_f1_search": 0.14516129032258066,
+      "val_metrics": {
+        "auroc": 0.7579467353951891,
+        "auprc": 0.061473678952172886,
+        "sensitivity": 0.75,
+        "specificity": 0.7345360824742269,
+        "f1": 0.14516129032258066,
+        "brier": 0.029615607881953308,
+        "threshold": 0.011746453382074832
+      }
+    },
+    {
+      "model": "xgboost_gbtree",
+      "threshold": 0.00042049477342516174,
+      "val_best_f1_search": 0.13953488372093023,
+      "val_metrics": {
+        "auroc": 0.7392611683848798,
+        "auprc": 0.055387950397001354,
+        "sensitivity": 1.0,
+        "specificity": 0.6185567010309279,
+        "f1": 0.13953488372093023,
+        "brier": 0.029969714405166353,
+        "threshold": 0.00042049477342516174
+      }
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "threshold": 5.8224579186559175e-06,
+      "val_best_f1_search": 0.1323529411764706,
+      "val_metrics": {
+        "auroc": 0.700708762886598,
+        "auprc": 0.05137802735403255,
+        "sensitivity": 0.75,
+        "specificity": 0.7036082474226805,
+        "f1": 0.1323529411764706,
+        "brier": 0.029999624397984634,
+        "threshold": 5.8224579186559175e-06
+      }
+    },
+    {
+      "model": "extratrees",
+      "threshold": 0.0012467514889009203,
+      "val_best_f1_search": 0.08181818181818182,
+      "val_metrics": {
+        "auroc": 0.571520618556701,
+        "auprc": 0.036261802906352295,
+        "sensitivity": 0.75,
+        "specificity": 0.48711340206185566,
+        "f1": 0.08181818181818182,
+        "brier": 0.02990512573020373,
+        "threshold": 0.0012467514889009203
+      }
+    },
+    {
+      "model": "mlp_deep",
+      "threshold": 1.3439233895460569e-05,
+      "val_best_f1_search": 0.09090909090909091,
+      "val_metrics": {
+        "auroc": 0.5012886597938144,
+        "auprc": 0.03222791900769238,
+        "sensitivity": 0.5,
+        "specificity": 0.7061855670103093,
+        "f1": 0.09090909090909091,
+        "brier": 0.029999369335666,
+        "threshold": 1.3439233895460569e-05
+      }
+    },
+    {
+      "model": "random_forest",
+      "threshold": 0.0,
+      "val_best_f1_search": 0.05825242718446602,
+      "val_metrics": {
+        "auroc": 0.4179553264604811,
+        "auprc": 0.028663003663003665,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "f1": 0.05825242718446602,
+        "brier": 0.030009553108327952,
+        "threshold": 0.0
+      }
+    },
+    {
+      "model": "soft_voting_top3",
+      "threshold": 0.004109301387932985,
+      "val_best_f1_search": 0.14516129032258066,
+      "val_metrics": {
+        "auroc": 0.747852233676976,
+        "auprc": 0.05811282682970982,
+        "sensitivity": 0.75,
+        "specificity": 0.7345360824742269,
+        "f1": 0.14516129032258066,
+        "brier": 0.029790355698288272,
+        "threshold": 0.004109301387932985
+      }
+    }
+  ],
+  "test_results": {
+    "xgboost_dart": {
+      "threshold": 0.011746453382074832,
+      "base_test_metrics": {
+        "auroc": 0.4865263935031377,
+        "auprc": 0.0341619221070517,
+        "sensitivity": 0.5714285714285714,
+        "specificity": 0.3798449612403101,
+        "f1": 0.061068702290076333,
+        "brier": 0.03757268245012096,
+        "threshold": 0.011746453382074832
+      },
+      "bootstrap_metrics": {
+        "auroc": {
+          "mean": 0.48073224721230967,
+          "ci_lower": 0.3739833995833827,
+          "ci_upper": 0.5967809305743309
+        },
+        "auprc": {
+          "mean": 0.037265341171548526,
+          "ci_lower": 0.017380916973958636,
+          "ci_upper": 0.060894483337205256
+        },
+        "sensitivity": {
+          "mean": 0.5643121055071519,
+          "ci_lower": 0.3333333333333333,
+          "ci_upper": 0.8095454545454545
+        },
+        "specificity": {
+          "mean": 0.3824000830720081,
+          "ci_lower": 0.34285401036325364,
+          "ci_upper": 0.4294076778144135
+        },
+        "f1": {
+          "mean": 0.06046566266425857,
+          "ci_lower": 0.022682246998284732,
+          "ci_upper": 0.10175056561085957
+        },
+        "brier": {
+          "mean": 0.03709449771131408,
+          "ci_lower": 0.021821394303847493,
+          "ci_upper": 0.05284548544094253
+        }
+      }
+    },
+    "xgboost_gbtree": {
+      "threshold": 0.00042049477342516174,
+      "base_test_metrics": {
+        "auroc": 0.599483204134367,
+        "auprc": 0.04869426448552244,
+        "sensitivity": 1.0,
+        "specificity": 0.25064599483204136,
+        "f1": 0.0880503144654088,
+        "brier": 0.035083659724030554,
+        "threshold": 0.00042049477342516174
+      },
+      "bootstrap_metrics": {
+        "auroc": {
+          "mean": 0.5962792622906942,
+          "ci_lower": 0.4717086038961039,
+          "ci_upper": 0.7009650201885277
+        },
+        "auprc": {
+          "mean": 0.057567858991884886,
+          "ci_lower": 0.031055774874051555,
+          "ci_upper": 0.10355020847907981
+        },
+        "sensitivity": {
+          "mean": 1.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0
+        },
+        "specificity": {
+          "mean": 0.24655876545578306,
+          "ci_lower": 0.20556286402892146,
+          "ci_upper": 0.2866724650749643
+        },
+        "f1": {
+          "mean": 0.09115452832083032,
+          "ci_lower": 0.05351805356288857,
+          "ci_upper": 0.13273028824157387
+        },
+        "brier": {
+          "mean": 0.036727121203667605,
+          "ci_lower": 0.021343302248820483,
+          "ci_upper": 0.054923180219826465
+        }
+      }
+    },
+    "hist_gradient_boosting": {
+      "threshold": 5.8224579186559175e-06,
+      "base_test_metrics": {
+        "auroc": 0.5713362864525655,
+        "auprc": 0.0478719371672436,
+        "sensitivity": 0.9285714285714286,
+        "specificity": 0.31266149870801035,
+        "f1": 0.08873720136518772,
+        "brier": 0.03491589216514857,
+        "threshold": 5.8224579186559175e-06
+      },
+      "bootstrap_metrics": {
+        "auroc": {
+          "mean": 0.5742275289025948,
+          "ci_lower": 0.43665035382463235,
+          "ci_upper": 0.7067131055473022
+        },
+        "auprc": {
+          "mean": 0.0542653913924031,
+          "ci_lower": 0.027892158000083545,
+          "ci_upper": 0.09047872369638332
+        },
+        "sensitivity": {
+          "mean": 0.9306267660078066,
+          "ci_lower": 0.77375,
+          "ci_upper": 1.0
+        },
+        "specificity": {
+          "mean": 0.3135872921927104,
+          "ci_lower": 0.276962334340851,
+          "ci_upper": 0.3532423276205659
+        },
+        "f1": {
+          "mean": 0.0895422246594765,
+          "ci_lower": 0.04859106529209622,
+          "ci_upper": 0.13093098166418884
+        },
+        "brier": {
+          "mean": 0.03526624414986737,
+          "ci_lower": 0.019955656783573292,
+          "ci_upper": 0.052368508133326094
+        }
+      }
+    },
+    "extratrees": {
+      "threshold": 0.0012467514889009203,
+      "base_test_metrics": {
+        "auroc": 0.5438353636028054,
+        "auprc": 0.05794004474141432,
+        "sensitivity": 0.7142857142857143,
+        "specificity": 0.31007751937984496,
+        "f1": 0.06872852233676977,
+        "brier": 0.03482983811371022,
+        "threshold": 0.0012467514889009203
+      },
+      "bootstrap_metrics": {
+        "auroc": {
+          "mean": 0.5628211233802011,
+          "ci_lower": 0.403779001659562,
+          "ci_upper": 0.7562000190772569
+        },
+        "auprc": {
+          "mean": 0.06883766464867322,
+          "ci_lower": 0.03251707322579657,
+          "ci_upper": 0.1312242622692831
+        },
+        "sensitivity": {
+          "mean": 0.7323399313534761,
+          "ci_lower": 0.5215909090909091,
+          "ci_upper": 0.9259615384615385
+        },
+        "specificity": {
+          "mean": 0.31195838413022703,
+          "ci_lower": 0.26699228791773777,
+          "ci_upper": 0.3697148125218702
+        },
+        "f1": {
+          "mean": 0.06938508786030383,
+          "ci_lower": 0.037433530228838406,
+          "ci_upper": 0.11059934897144193
+        },
+        "brier": {
+          "mean": 0.03428622542449637,
+          "ci_lower": 0.0188370912175917,
+          "ci_upper": 0.048320965871449066
+        }
+      }
+    },
+    "mlp_deep": {
+      "threshold": 1.3439233895460569e-05,
+      "base_test_metrics": {
+        "auroc": 0.43632336655592463,
+        "auprc": 0.050180411025838194,
+        "sensitivity": 0.42857142857142855,
+        "specificity": 0.2868217054263566,
+        "f1": 0.04054054054054054,
+        "brier": 0.03474327769042218,
+        "threshold": 1.3439233895460569e-05
+      },
+      "bootstrap_metrics": {
+        "auroc": {
+          "mean": 0.44693802061627186,
+          "ci_lower": 0.24910115239501313,
+          "ci_upper": 0.6264033477019753
+        },
+        "auprc": {
+          "mean": 0.0597953114484517,
+          "ci_lower": 0.02752858336661342,
+          "ci_upper": 0.10819830419705487
+        },
+        "sensitivity": {
+          "mean": 0.44179700339967537,
+          "ci_lower": 0.18764705882352942,
+          "ci_upper": 0.6884615384615383
+        },
+        "specificity": {
+          "mean": 0.2840279288425913,
+          "ci_lower": 0.23240712301693287,
+          "ci_upper": 0.3290411931818182
+        },
+        "f1": {
+          "mean": 0.04241931438288862,
+          "ci_lower": 0.019538437052363522,
+          "ci_upper": 0.0789644980824038
+        },
+        "brier": {
+          "mean": 0.03552843985329846,
+          "ci_lower": 0.022373160278995823,
+          "ci_upper": 0.05091739023653023
+        }
+      }
+    },
+    "random_forest": {
+      "threshold": 0.0,
+      "base_test_metrics": {
+        "auroc": 0.5374677002583979,
+        "auprc": 0.059565327122247866,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "f1": 0.06746987951807229,
+        "brier": 0.03455027767126885,
+        "threshold": 0.0
+      },
+      "bootstrap_metrics": {
+        "auroc": {
+          "mean": 0.5344317550718513,
+          "ci_lower": 0.34199386843628965,
+          "ci_upper": 0.734868224988859
+        },
+        "auprc": {
+          "mean": 0.07368483521622074,
+          "ci_lower": 0.02513241730953541,
+          "ci_upper": 0.1523863033706218
+        },
+        "sensitivity": {
+          "mean": 1.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0
+        },
+        "specificity": {
+          "mean": 0.0,
+          "ci_lower": 0.0,
+          "ci_upper": 0.0
+        },
+        "f1": {
+          "mean": 0.07142598989983204,
+          "ci_lower": 0.039119804400977995,
+          "ci_upper": 0.10636653062134793
+        },
+        "brier": {
+          "mean": 0.03658708195879914,
+          "ci_lower": 0.020298744111209344,
+          "ci_upper": 0.054597660551929265
+        }
+      }
+    },
+    "soft_voting_top3": {
+      "threshold": 0.004109301387932985,
+      "base_test_metrics": {
+        "auroc": 0.5084902177925434,
+        "auprc": 0.036113014977071686,
+        "sensitivity": 0.6428571428571429,
+        "specificity": 0.3798449612403101,
+        "f1": 0.06844106463878327,
+        "brier": 0.03522245148358347,
+        "threshold": 0.004109301387932985
+      },
+      "bootstrap_metrics": {
+        "auroc": {
+          "mean": 0.5069890720398802,
+          "ci_lower": 0.38825171708339085,
+          "ci_upper": 0.6106841910102779
+        },
+        "auprc": {
+          "mean": 0.03907948432174187,
+          "ci_lower": 0.020704969319122777,
+          "ci_upper": 0.06698603847414189
+        },
+        "sensitivity": {
+          "mean": 0.6478609740007977,
+          "ci_lower": 0.34464285714285714,
+          "ci_upper": 0.8621428571428571
+        },
+        "specificity": {
+          "mean": 0.3780510947589055,
+          "ci_lower": 0.3350105949795075,
+          "ci_upper": 0.4297610722610722
+        },
+        "f1": {
+          "mean": 0.06695124982197355,
+          "ci_lower": 0.02672362467254108,
+          "ci_upper": 0.11820802583025818
+        },
+        "brier": {
+          "mean": 0.034359103618813315,
+          "ci_lower": 0.01775442426224895,
+          "ci_upper": 0.05628658249753693
+        }
+      }
+    }
+  },
+  "ranking": [
+    {
+      "model": "xgboost_gbtree",
+      "test_auroc_mean": 0.5962792622906942,
+      "test_auprc_mean": 0.057567858991884886,
+      "test_f1_mean": 0.09115452832083032,
+      "test_sensitivity_mean": 1.0,
+      "test_specificity_mean": 0.24655876545578306
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "test_auroc_mean": 0.5742275289025948,
+      "test_auprc_mean": 0.0542653913924031,
+      "test_f1_mean": 0.0895422246594765,
+      "test_sensitivity_mean": 0.9306267660078066,
+      "test_specificity_mean": 0.3135872921927104
+    },
+    {
+      "model": "extratrees",
+      "test_auroc_mean": 0.5628211233802011,
+      "test_auprc_mean": 0.06883766464867322,
+      "test_f1_mean": 0.06938508786030383,
+      "test_sensitivity_mean": 0.7323399313534761,
+      "test_specificity_mean": 0.31195838413022703
+    },
+    {
+      "model": "random_forest",
+      "test_auroc_mean": 0.5344317550718513,
+      "test_auprc_mean": 0.07368483521622074,
+      "test_f1_mean": 0.07142598989983204,
+      "test_sensitivity_mean": 1.0,
+      "test_specificity_mean": 0.0
+    },
+    {
+      "model": "soft_voting_top3",
+      "test_auroc_mean": 0.5069890720398802,
+      "test_auprc_mean": 0.03907948432174187,
+      "test_f1_mean": 0.06695124982197355,
+      "test_sensitivity_mean": 0.6478609740007977,
+      "test_specificity_mean": 0.3780510947589055
+    },
+    {
+      "model": "xgboost_dart",
+      "test_auroc_mean": 0.48073224721230967,
+      "test_auprc_mean": 0.037265341171548526,
+      "test_f1_mean": 0.06046566266425857,
+      "test_sensitivity_mean": 0.5643121055071519,
+      "test_specificity_mean": 0.3824000830720081
+    },
+    {
+      "model": "mlp_deep",
+      "test_auroc_mean": 0.44693802061627186,
+      "test_auprc_mean": 0.0597953114484517,
+      "test_f1_mean": 0.04241931438288862,
+      "test_sensitivity_mean": 0.44179700339967537,
+      "test_specificity_mean": 0.2840279288425913
+    }
+  ]
+}
