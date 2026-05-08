@@ -1,0 +1,142 @@
+{
+  "model": "EnhancedTCNBiGRUTransformer",
+  "config": {
+    "data_dir": "data/raw",
+    "history_hours": 24,
+    "forecast_hours": 6,
+    "seed": 42,
+    "max_patients": 220,
+    "bootstrap_rounds": 100,
+    "batch_size": 64,
+    "epochs": 35,
+    "learning_rate": 0.0005,
+    "warmup_epochs": 4,
+    "d_model": 128,
+    "nhead": 8,
+    "num_layers": 3,
+    "dim_feedforward": 384,
+    "gru_layers": 2,
+    "tcn_channels": 128,
+    "tcn_kernel_size": 3,
+    "dropout": 0.25,
+    "patience": 7,
+    "grad_clip": 1.0,
+    "weight_decay": 0.0005,
+    "gamma": 2.0,
+    "label_smoothing": 0.0,
+    "attn_heads": 1,
+    "out_dir": "results"
+  },
+  "data_stats": {
+    "patients_with_windows": 132,
+    "total_windows": 2668,
+    "positive_rate": 0.020989505247376312,
+    "train_positive_rate": 0.016068559185859668,
+    "val_positive_rate": 0.03,
+    "test_positive_rate": 0.034912718204488775
+  },
+  "split_stats": {
+    "train_size": 1867,
+    "val_size": 400,
+    "test_size": 401
+  },
+  "feature_engineering": {
+    "base_features": [
+      "HR",
+      "O2Sat",
+      "Temp",
+      "SBP",
+      "MAP",
+      "DBP",
+      "Resp",
+      "EtCO2",
+      "BaseExcess",
+      "HCO3",
+      "pH",
+      "PaCO2",
+      "Glucose",
+      "Lactate",
+      "Potassium",
+      "Hgb",
+      "WBC",
+      "Creatinine",
+      "Platelets",
+      "BUN"
+    ],
+    "engineered_channels": [
+      "z_norm",
+      "first_difference",
+      "missing_indicator"
+    ],
+    "final_feature_dim": 60
+  },
+  "training": {
+    "selected_threshold": 0.1761661723256111,
+    "threshold_criterion": "max_YoudensJ_adaptive_grid"
+  },
+  "validation_metrics": {
+    "auroc": 0.7111254295532645,
+    "auprc": 0.143313752016898,
+    "sensitivity": 0.5,
+    "specificity": 0.9432989690721649,
+    "precision": 0.21428571428571427,
+    "recall": 0.5,
+    "accuracy": 0.93,
+    "f1": 0.3,
+    "brier": 0.05014618193182272,
+    "ece": 0.14520323395729065,
+    "threshold": 0.1761661723256111
+  },
+  "test_metrics": {
+    "auroc": {
+      "mean": 0.5738183571244568,
+      "ci_lower": 0.4526602438079754,
+      "ci_upper": 0.6972624375837291
+    },
+    "auprc": {
+      "mean": 0.04644964147135662,
+      "ci_lower": 0.020761678331619807,
+      "ci_upper": 0.07262276692401767
+    },
+    "sensitivity": {
+      "mean": 0.1274843417246668,
+      "ci_lower": 0.0,
+      "ci_upper": 0.3333333333333333
+    },
+    "specificity": {
+      "mean": 0.8148189256693104,
+      "ci_lower": 0.7748559044048735,
+      "ci_upper": 0.8508997429305912
+    },
+    "precision": {
+      "mean": 0.02316140932050876,
+      "ci_lower": 0.0,
+      "ci_upper": 0.05714285714285714
+    },
+    "recall": {
+      "mean": 0.1274843417246668,
+      "ci_lower": 0.0,
+      "ci_upper": 0.3333333333333333
+    },
+    "accuracy": {
+      "mean": 0.7913466334164589,
+      "ci_lower": 0.7493142144638404,
+      "ci_upper": 0.8267456359102244
+    },
+    "f1": {
+      "mean": 0.03876802979177118,
+      "ci_lower": 0.0,
+      "ci_upper": 0.09645760743321717
+    },
+    "brier": {
+      "mean": 0.08333215037615778,
+      "ci_lower": 0.06845707349847162,
+      "ci_upper": 0.10082555826601902
+    },
+    "ece": {
+      "mean": 0.17282962563700807,
+      "ci_lower": 0.1491912567017233,
+      "ci_upper": 0.19257860974573582
+    }
+  }
+}
